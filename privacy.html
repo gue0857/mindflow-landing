@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>隱私權政策 — MIND FLOW 思維流</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="/"><img src="logo_horizontal.png" alt="MIND FLOW 思維流" height="40"></a>
+      <nav>
+        <a href="index.html">回首頁</a>
+        <a href="terms.html">服務條款</a>
+        <a href="support.html">支援</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="article">
+    <h1>隱私權政策</h1>
+    <p class="subtitle"><span class="effective">最後更新：2026 年 5 月 15 日</span></p>
+
+    <p>
+      本隱私權政策說明 MIND FLOW 思維流（以下簡稱「<strong>本公司</strong>」、「<strong>我們</strong>」）
+      於提供「MIND FLOW 行動照顧日誌」應用程式（以下簡稱「<strong>本服務</strong>」）時，
+      如何蒐集、使用、儲存及保護您的個人資料。
+    </p>
+    <p>
+      本服務遵循中華民國《個人資料保護法》、相關施行細則，以及（如適用）歐盟一般資料保護規則（GDPR）
+      與美國加州消費者隱私法（CCPA）。使用本服務即表示您已詳閱並同意本政策。
+    </p>
+
+    <h2>1. 我們蒐集的資料</h2>
+
+    <h3>1.1 帳號資料</h3>
+    <ul>
+      <li><strong>電子郵件地址</strong>（或員工編號加上預設網域）— 用於登入與身分識別</li>
+      <li><strong>密碼</strong>— 以業界標準雜湊演算法儲存，本公司及任何第三方均無法還原</li>
+      <li><strong>姓名、職稱、所屬分院</strong>— 由貴機構管理員建立</li>
+    </ul>
+
+    <h3>1.2 照顧紀錄資料（由您輸入）</h3>
+    <ul>
+      <li>個案每日 Q1-Q12 照顧日誌內容（服藥、飲食、排泄、情緒、活動等）</li>
+      <li>備註、附加照片（如有）</li>
+      <li>紀錄日期、時間與紀錄者姓名</li>
+    </ul>
+    <p>本類資料係<strong>受您雇主（長照機構）委託</strong>蒐集，本公司僅為個資處理者。</p>
+
+    <h3>1.3 技術資料</h3>
+    <ul>
+      <li>裝置型號、作業系統版本、App 版本</li>
+      <li>登入時間、IP 位址、登入失敗紀錄（用於安全稽核）</li>
+      <li>當機與崩潰報告（不含個案資料內容）</li>
+    </ul>
+
+    <h2>2. 資料用途</h2>
+    <p>我們僅就以下目的處理您的資料：</p>
+    <ul>
+      <li>提供本服務功能（登入、照顧紀錄輸入、跨裝置同步）</li>
+      <li>身分驗證與授權檢查（依分院 schema 與資料列權限 RLS）</li>
+      <li>系統運營、故障排除、安全稽核</li>
+      <li>依法令或主管機關要求配合提供</li>
+    </ul>
+    <p>我們<strong>不會</strong>將您的個人資料或照顧紀錄用於行銷、廣告或銷售給第三方。</p>
+
+    <h2>3. 資料共享與第三方處理者</h2>
+    <p>為提供本服務，我們與下列受我們嚴格資料處理協議約束的第三方合作：</p>
+    <ul>
+      <li><strong>Supabase Inc.</strong>（資料庫與身分驗證）— 資料儲存於東京區域</li>
+      <li><strong>Google LLC / Firebase</strong>（網頁版部署託管）</li>
+      <li><strong>Apple Inc.</strong>（iOS 應用程式商店與通知服務）</li>
+    </ul>
+    <p>除上述處理者及依法律強制要求外，我們不會將您的資料揭露給其他第三方。</p>
+
+    <h2>4. 資料儲存位置與保存期限</h2>
+    <p>
+      您的所有資料儲存於 Supabase 位於日本東京的資料中心。
+      照顧紀錄資料依貴機構保存規定保留，最短 7 年；
+      帳號資料於您要求刪除帳號後 30 日內自所有生產系統清除（備份檔依法令最長保留 90 日）。
+    </p>
+
+    <h2>5. 資料安全</h2>
+    <ul>
+      <li>傳輸全程採用 TLS 1.2+ 加密</li>
+      <li>密碼以業界標準 bcrypt 雜湊儲存</li>
+      <li>資料庫每日自動備份、加密儲存</li>
+      <li>採用 Row-Level Security (RLS) 控制資料存取，分院間資料隔離</li>
+      <li>系統存取日誌保留供稽核</li>
+    </ul>
+
+    <h2>6. 您的權利</h2>
+    <p>依個人資料保護法第 3 條，您享有以下權利：</p>
+    <ul>
+      <li>查詢或請求閱覽您的個人資料</li>
+      <li>請求製給複製本</li>
+      <li>請求補充或更正</li>
+      <li>請求停止蒐集、處理或利用</li>
+      <li>請求刪除</li>
+    </ul>
+    <p>請來信 <a href="mailto:privacy@mindflow.tw">privacy@mindflow.tw</a> 行使上述權利，我們將於 30 日內回覆。</p>
+
+    <h2>7. Cookies 與追蹤技術</h2>
+    <p>
+      本 App 不使用任何第三方廣告追蹤、分析 SDK（Google Analytics、Facebook Pixel 等）。
+      Supabase 與 Firebase 僅就服務運作必要使用 session token。
+    </p>
+
+    <h2>8. 未成年人</h2>
+    <p>
+      本服務僅供成年護理專業人員使用，不對 18 歲以下個人提供。
+      若我們發現誤蒐集了未成年人資料將立即刪除。
+    </p>
+
+    <h2>9. 政策變更</h2>
+    <p>
+      本政策如有重大變更，將於 App 內顯著通知並於本頁公告，
+      於通知後 30 日生效。您持續使用即視為同意變更後條款。
+    </p>
+
+    <h2>10. 聯絡我們</h2>
+    <p>
+      就本隱私權政策、個資處理或您的權利行使有任何問題，請聯絡：
+    </p>
+    <ul>
+      <li>Email：<a href="mailto:privacy@mindflow.tw">privacy@mindflow.tw</a></li>
+      <li>客服信箱：<a href="mailto:hello@mindflow.tw">hello@mindflow.tw</a></li>
+    </ul>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <img src="logo_horizontal.png" alt="MIND FLOW 思維流" height="32">
+        <p class="muted">智慧醫療 · 流動未來</p>
+      </div>
+      <nav class="footer-nav">
+        <a href="privacy.html">隱私權政策</a>
+        <a href="terms.html">服務條款</a>
+        <a href="support.html">支援</a>
+        <a href="mailto:hello@mindflow.tw">聯絡我們</a>
+      </nav>
+      <div class="muted small">© 2026 MIND FLOW 思維流. All rights reserved.</div>
+    </div>
+  </footer>
+</body>
+</html>
