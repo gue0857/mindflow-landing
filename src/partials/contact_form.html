@@ -1,0 +1,44 @@
+<form class="cform" action="/api/contact" method="post" novalidate>
+  <div class="cform-grid">
+    <label><span>姓名 <em>*</em></span><input name="name" required maxlength="50" autocomplete="name"></label>
+    <label><span>公司／機構名稱 <em>*</em></span><input name="company" required maxlength="100" autocomplete="organization"></label>
+    <label><span>工作信箱 <em>*</em></span><input name="email" type="email" required maxlength="120" autocomplete="email"></label>
+    <label><span>聯絡電話</span><input name="phone" type="tel" maxlength="30" autocomplete="tel" placeholder="選填"></label>
+    <label class="full"><span>想交給 AI 的工作 <em>*</em></span>
+      <textarea name="message" required maxlength="3000" rows="4" placeholder="現在怎麼做、多久做一次、大約花多少時間。例如：每週一整理逾期應收帳款，依業務分組通知負責人，約花 3 小時。"></textarea>
+    </label>
+    <label class="full"><span>目前使用的系統</span><input name="systems" maxlength="500" placeholder="選填，例如：鼎新 ERP、Google 試算表、LINE 官方帳號"></label>
+    <label class="hp" aria-hidden="true">網站<input name="website" tabindex="-1" autocomplete="off"></label>
+    <input type="hidden" name="t" value="">
+    <input type="hidden" name="page" value="">
+    <label class="check full"><input type="checkbox" name="consent" value="1" required><span>我同意依<a href="/privacy" target="_blank">隱私權政策</a>處理所填資料，且未填入任何個案、病歷等敏感資料。</span></label>
+  </div>
+  <div class="cform-foot">
+    <button class="btn btn-primary" type="submit">送出諮詢</button>
+    <p class="cform-msg" role="status" aria-live="polite"></p>
+  </div>
+</form>
+<script>
+(function () {
+  document.querySelectorAll('form.cform').forEach(function (f) {
+    if (f.dataset.ready) return; f.dataset.ready = '1';
+    f.t.value = Date.now(); f.page.value = location.pathname;
+    var msg = f.querySelector('.cform-msg'), btn = f.querySelector('button');
+    f.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (!f.checkValidity()) { msg.className = 'cform-msg err'; msg.textContent = '請填寫必填欄位，並確認信箱格式與同意事項。'; f.reportValidity(); return; }
+      var data = Object.fromEntries(new FormData(f));
+      btn.disabled = true; msg.className = 'cform-msg'; msg.textContent = '送出中…';
+      fetch('/api/contact', { method: 'POST', headers: { 'content-type': 'application/json', accept: 'application/json' }, body: JSON.stringify(data) })
+        .then(function (r) { return r.json(); })
+        .then(function (j) {
+          if (!j.ok) throw new Error(j.error);
+          f.reset(); f.t.value = Date.now(); f.page.value = location.pathname;
+          msg.className = 'cform-msg ok'; msg.textContent = '已收到您的諮詢，我們會於 2 個工作日內以 Email 回覆。';
+        })
+        .catch(function (err) { msg.className = 'cform-msg err'; msg.textContent = (err && err.message) || '系統暫時無法送出，請稍後再試。'; })
+        .finally(function () { btn.disabled = false; });
+    });
+  });
+})();
+</script>

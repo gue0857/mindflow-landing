@@ -12,3 +12,14 @@ Thumbs.db
 .vscode/
 .idea/
 *.swp
+
+# build output
+public/
+__pycache__/
+
+# 表單共用密鑰（不進版控）
+.form_secret
+.dev.vars
+gas_contact/Code.js
+.clasp.json
+.gas_url

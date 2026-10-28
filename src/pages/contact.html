@@ -1,0 +1,43 @@
+<!--
+title: 預約諮詢｜聊聊您想交給 AI 的工作｜MIND FLOW 思維流
+og_title: 預約 MIND FLOW 諮詢
+description: 填寫線上表單，告訴 MIND FLOW 思維流您想交給 AI 代理人的流程。我們會評估適合度、需要串接的系統與可節省的人力，並於 2 個工作日內以 Email 回覆。初次諮詢不收費。
+path: /contact
+crumb: 預約諮詢
+priority: 0.8
+-->
+<div class="page-hero">
+  <div class="container">
+    <nav class="crumbs" aria-label="麵包屑"><a href="/">首頁</a> ／ 預約諮詢</nav>
+    <span class="eyebrow">預約諮詢</span>
+    <h1>告訴我們哪件事最花時間</h1>
+    <p class="lead">什麼工作都可以談，不用先想好要買什麼。描述您現在怎麼做，我們會評估哪些部分能交給 AI、需要串接哪些系統，以及大約能節省多少人力，並於 2 個工作日內以 Email 回覆。初次諮詢不收費。</p>
+  </div>
+</div>
+
+<section style="padding-top:56px">
+  <div class="container contact-wrap">
+    <div>
+      <h2 style="font-size:24px">諮詢會談些什麼</h2>
+      <ul class="checklist">
+        <li>這件工作現在怎麼做、每週花多少時間</li>
+        <li>哪些步驟適合交給 AI 代理人，哪些應保留人工判斷</li>
+        <li>需要串接的系統與資料權限</li>
+        <li>建議的試行範圍、時程與預估費用</li>
+      </ul>
+      <p class="muted" style="font-size:14.5px;margin-top:24px">想要類似<a href="/cases">實績案例</a>的系統、申請 CarePro 試用帳號，或 App 使用問題，也都請使用這份表單，在內容中說明即可。</p>
+    </div>
+    <div>
+      <div class="notice ok" id="sent-ok" hidden>已收到您的諮詢，我們會於 2 個工作日內以 Email 回覆。</div>
+      <div class="notice err" id="sent-err" hidden></div>
+      {{CONTACT_FORM}}
+    </div>
+  </div>
+</section>
+<script>
+(function () {
+  var q = new URLSearchParams(location.search);
+  if (q.get('sent')) document.getElementById('sent-ok').hidden = false;
+  if (q.get('error')) { var e = document.getElementById('sent-err'); e.textContent = q.get('error'); e.hidden = false; }
+})();
+</script>

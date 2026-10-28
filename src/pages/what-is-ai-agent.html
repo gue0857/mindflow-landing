@@ -1,0 +1,131 @@
+<!--
+title: 什麼是 AI 代理人（AI Agent）？企業流程 AI 代理人導入指南｜MIND FLOW 思維流
+og_title: 什麼是 AI 代理人？企業流程 AI 代理人導入指南
+description: AI 代理人（AI Agent）是能接受自然語言指令、自行規劃步驟、串接系統執行工作並主動回報的 AI 程式。本文說明它與聊天機器人、RPA 的差異、適合的流程、導入步驟與風險控管。
+path: /what-is-ai-agent
+crumb: 什麼是 AI 代理人
+nav: guide
+og_type: article
+priority: 0.8
+-->
+<div class="page-hero">
+  <div class="container">
+    <nav class="crumbs" aria-label="麵包屑"><a href="/">首頁</a> ／ 什麼是 AI 代理人</nav>
+    <span class="eyebrow">導入指南</span>
+    <h1>什麼是 AI 代理人？<br>企業流程 AI 代理人導入指南</h1>
+    <p class="meta-line">MIND FLOW 思維流 編輯　・　最後更新 <time datetime="{{UPDATED}}">{{UPDATED}}</time></p>
+  </div>
+</div>
+
+<article class="prose">
+  <div class="tldr">
+    <p><strong>重點摘要：</strong>AI 代理人（AI Agent）是一種能接受自然語言指令、自行規劃步驟、使用工具與企業系統完成工作，並在完成後主動回報結果的 AI 程式。企業流程 AI 代理人專門處理公司內重複、有規則、需要跨系統的例行工作，例如對帳、報表彙整、客戶詢問分類，並依排程定期執行，遇到例外時請人核准。</p>
+  </div>
+
+  <h2 id="definition">AI 代理人的定義</h2>
+  <p>傳統的 AI 應用多半是「人問、AI 答」：使用者提出問題，AI 回覆一段文字，接下來的事仍由人完成。AI 代理人則把「答」延伸成「做」：它理解目標後，會自行決定要讀哪些資料、呼叫哪些系統、依什麼順序處理，直到工作完成，再把結果交回給人。</p>
+  <p>一個可以在企業內實際使用的 AI 代理人，通常具備四個要素：</p>
+  <ol>
+    <li><strong>目標理解：</strong>能把自然語言指令轉成明確的工作目標與完成條件。</li>
+    <li><strong>規劃與判斷：</strong>能把目標拆成步驟，依資料內容做判斷，並在不確定時停下來確認。</li>
+    <li><strong>工具使用：</strong>能透過 API、資料庫、檔案或瀏覽器操作企業既有系統。</li>
+    <li><strong>回報與記錄：</strong>能整理執行結果、異常與待決事項，並留下可稽核的操作紀錄。</li>
+  </ol>
+
+  <h2 id="how-it-works">企業流程 AI 代理人如何運作</h2>
+  <p>以「每週一整理逾期應收帳款」為例，代理人的一次執行會經過以下階段：</p>
+  <ol>
+    <li><strong>觸發：</strong>排程時間到（每週一 09:00），或發生指定事件（例如收到銀行對帳單）。</li>
+    <li><strong>收集：</strong>從會計系統讀取應收帳款，從銀行明細讀取入帳紀錄。</li>
+    <li><strong>判斷：</strong>比對沖帳結果，找出逾期款項，依金額與天數分級。</li>
+    <li><strong>執行：</strong>依業務負責人分組，產生催收清單並寄出通知。</li>
+    <li><strong>核准：</strong>金額超過門檻的項目暫停，連同判斷依據送交主管確認。</li>
+    <li><strong>匯報：</strong>彙整本次處理結果、與上週比較的變化與建議，主動送達主管。</li>
+  </ol>
+  <p>設定完成後，這六個步驟每週自動重複；人只需要看匯報、處理被標出來的例外。</p>
+
+  <h2 id="comparison">AI 代理人與聊天機器人、RPA、工作流程工具的差異</h2>
+  <div class="table-wrap">
+    <table class="compare">
+      <thead>
+        <tr><th scope="col">類型</th><th scope="col">運作方式</th><th scope="col">優勢</th><th scope="col">限制</th></tr>
+      </thead>
+      <tbody>
+        <tr><th scope="row">聊天機器人</th><td>使用者提問後回覆</td><td>上手快，適合查詢與寫作</td><td>不會主動執行，後續仍需人工</td></tr>
+        <tr><th scope="row">RPA 機器人</th><td>錄製固定點擊與輸入步驟</td><td>步驟固定時穩定快速</td><td>畫面或格式一改就容易中斷，無法處理非結構化內容</td></tr>
+        <tr><th scope="row">工作流程工具</th><td>以「若 A 則 B」串接各應用程式</td><td>規則明確的串接很有效率</td><td>需要事先列出所有條件，難以處理需要判讀的內容</td></tr>
+        <tr><th scope="row" style="color:var(--accent)">AI 代理人</th><td>依目標自行規劃步驟並操作系統</td><td>能讀懂文件、處理變化、主動回報</td><td>需要設計權限、核准關卡與驗證機制</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>實務上，這幾種技術常常搭配使用：規則固定的部分用工作流程工具處理，需要閱讀、判斷與彙整的部分交給 AI 代理人。</p>
+
+  <h2 id="fit">哪些流程適合交給 AI 代理人</h2>
+  <p>符合下列條件越多，越適合優先自動化：</p>
+  <ul>
+    <li><strong>重複發生：</strong>每天、每週或每月都要做一次以上。</li>
+    <li><strong>規則可說明：</strong>資深同事能講清楚「什麼情況要怎麼處理」。</li>
+    <li><strong>跨系統搬資料：</strong>需要在兩個以上的系統或檔案間複製、比對、彙整。</li>
+    <li><strong>需要閱讀內容：</strong>要從信件、表單、PDF 或紀錄中找出關鍵資訊。</li>
+    <li><strong>結果需要回報：</strong>做完後要整理給主管或其他部門。</li>
+  </ul>
+  <p>相對地，需要高度人際判斷（例如談判、懲處決定）、或錯誤代價極高且無法設置核准關卡的工作，不建議完全交給代理人，較適合讓代理人負責準備資料，由人做最後決定。</p>
+
+  <h2 id="steps">企業導入 AI 代理人的步驟</h2>
+  <ol>
+    <li><strong>盤點流程：</strong>列出團隊每週花最多時間的例行工作，記錄頻率、耗時與涉及的系統。</li>
+    <li><strong>挑選第一條流程：</strong>選擇頻率高、規則清楚、出錯代價可控的流程試行。</li>
+    <li><strong>定義成功標準：</strong>例如正確率、例外比例、每週節省工時。</li>
+    <li><strong>建置與並行驗證：</strong>代理人與人工同時處理一段時間，比對結果後再正式上線。</li>
+    <li><strong>設定匯報與核准：</strong>決定誰收匯報、什麼情況需要核准、異常如何通知。</li>
+    <li><strong>量測後擴大：</strong>以實際成效決定下一條要自動化的流程。</li>
+  </ol>
+
+  <h2 id="governance">風險與治理：如何讓 AI 代理人安全上工</h2>
+  <ul>
+    <li><strong>最小權限：</strong>代理人只取得完成任務所需的系統權限，並使用獨立帳號，方便追蹤與撤銷。</li>
+    <li><strong>人工核准：</strong>付款、對外寄送、刪除或修改重要資料等動作，設定金額或風險門檻，超過即暫停待核。</li>
+    <li><strong>完整紀錄：</strong>保留讀取的資料、執行的動作與判斷依據，供內部稽核與問題回溯。</li>
+    <li><strong>資料保護：</strong>依資料敏感度選擇模型服務與部署方式；個資、病歷等敏感資料可先去識別化，或採私有部署。</li>
+    <li><strong>可隨時停止：</strong>每個代理人與排程都能單獨暫停，不影響其他流程。</li>
+  </ul>
+
+  <h2 id="roi">如何估算導入效益</h2>
+  <p>最直接的方式是計算被釋放的工時：</p>
+  <p style="background:var(--bg-soft);border-radius:10px;padding:14px 18px"><strong>每月節省工時 ＝ 每次人工處理時間 × 每月執行次數 × 自動完成比例</strong></p>
+  <p>例如一項每次需 2 小時、每週做 1 次的彙整工作，若代理人能自動完成 80%，每月約可節省 2 × 4 × 0.8 ≈ 6.4 小時。除了工時，也應一併評估錯誤減少、處理速度加快，以及主管不必再追進度所省下的溝通成本。</p>
+
+  <h2 id="mindflow">MIND FLOW 思維流能協助什麼</h2>
+  <p>MIND FLOW 思維流是位於台灣花蓮的軟體公司，為企業打造專屬 AI 代理人，不限產業與部門，服務範圍涵蓋工作盤點、系統串接、權限與核准設計、排程執行、主動匯報與後續維運。我們自己每天運作的代理人涵蓋社群數據監測、多平台內容發布、教學影片製作與日照機構流程（<a href="/cases">實績案例</a>）。</p>
+  <p>想了解您的流程是否適合導入，請參考<a href="/ai-agents">AI 代理人服務內容</a>，或直接<a href="/contact">預約流程諮詢</a>。</p>
+</article>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "什麼是 AI 代理人？企業流程 AI 代理人導入指南",
+  "description": "AI 代理人（AI Agent）的定義、運作方式、與聊天機器人及 RPA 的差異、適合的流程、導入步驟、風險治理與效益估算。",
+  "inLanguage": "zh-TW",
+  "mainEntityOfPage": "{{SITE}}/what-is-ai-agent",
+  "datePublished": "2026-10-28",
+  "dateModified": "{{UPDATED}}",
+  "author": { "@id": "{{SITE}}/#org" },
+  "publisher": { "@id": "{{SITE}}/#org" },
+  "image": "{{SITE}}/assets/og.png",
+  "about": [
+    { "@type": "Thing", "name": "AI 代理人" },
+    { "@type": "Thing", "name": "企業流程自動化" }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "DefinedTerm",
+  "name": "AI 代理人",
+  "alternateName": ["AI Agent", "企業流程 AI 代理人"],
+  "description": "能接受自然語言指令、自行規劃步驟、使用工具與企業系統完成工作，並在完成後主動回報結果的 AI 程式。",
+  "url": "{{SITE}}/what-is-ai-agent#definition"
+}
+</script>
