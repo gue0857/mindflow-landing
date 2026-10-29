@@ -39,6 +39,7 @@ CSS_VER = hashlib.md5((SRC / "static" / "styles.css").read_bytes()).hexdigest()[
 NAV = [
     ("agents", "/ai-agents", "服務方式"),
     ("training", "/ai-training", "企業內訓"),
+    ("dev", "/custom-software", "軟體開發"),
     ("cases", "/cases", "實績案例"),
     ("guide", "/what-is-ai-agent", "導入指南"),
     ("faq", "/faq", "常見問題"),
@@ -62,7 +63,7 @@ def org_graph():
                 "url": s["url"] + "/",
                 "logo": f"{s['url']}/assets/icon-512.png",
                 "sameAs": [s["youtube"]],
-                "description": "MIND FLOW 思維流是台灣花蓮的軟體公司，為企業打造專屬 AI 代理人：人下指令，AI 依排程把工作做完，遇到例外才請人確認，並定期主動匯報結果；也提供企業 AI 內訓與組織培訓，讓團隊自己會用 AI。不限產業與部門，實績涵蓋社群與網紅數據監測、多平台自動發布、AI 教學影片製作與日照機構工作流程系統 CarePro。",
+                "description": "MIND FLOW 思維流是台灣花蓮的軟體公司，為企業打造專屬 AI 代理人：人下指令，AI 依排程把工作做完，遇到例外才請人確認，並定期主動匯報結果；也提供企業 AI 內訓與組織培訓，讓團隊自己會用 AI；並以 AI 輔助開發，為企業量身打造內部系統、小工具與手機 App。不限產業與部門，實績涵蓋社群與網紅數據監測、多平台自動發布、AI 教學影片製作與日照機構工作流程系統 CarePro。",
                 "address": {
                     "@type": "PostalAddress",
                     "streetAddress": s["street"],
@@ -74,7 +75,7 @@ def org_graph():
                 "areaServed": {"@type": "Country", "name": "台灣"},
                 "knowsAbout": [
                     "AI 代理人", "AI Agent", "企業流程自動化", "工作流程自動化",
-                    "生成式 AI 導入", "企業 AI 內訓", "AI 教育訓練", "組織 AI 培訓", "社群數據分析", "網紅成效監測", "社群自動發布", "AI 教學影片製作", "語音合成", "會議報到系統", "活動 QR Code 報到", "長照資訊系統", "日照管理系統", "FHIR 醫療資料交換",
+                    "生成式 AI 導入", "企業 AI 內訓", "AI 教育訓練", "組織 AI 培訓", "客製軟體開發", "App 開發", "企業內部系統開發", "AI 輔助開發", "社群數據分析", "網紅成效監測", "社群自動發布", "AI 教學影片製作", "語音合成", "會議報到系統", "活動 QR Code 報到", "長照資訊系統", "日照管理系統", "FHIR 醫療資料交換",
                 ],
                 "contactPoint": {
                     "@type": "ContactPoint",
