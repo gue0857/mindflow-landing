@@ -380,3 +380,6 @@ a.plink .more { color: var(--accent); }
 .shot-figure figcaption { color: var(--muted); font-size: 14.5px; margin-top: 12px; text-align: center; }
 .shot-grid { align-items: start; }
 .grid-2 > :last-child:nth-child(odd) { grid-column: 1 / -1; }
+
+/* ---------- Services overview ---------- */
+#services .case-card p.svc-fit { font-size: 14.5px; color: var(--accent); font-weight: 600; margin: 4px 0 0; }

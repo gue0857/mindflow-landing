@@ -37,7 +37,7 @@ RAW = {}
 CSS_VER = hashlib.md5((SRC / "static" / "styles.css").read_bytes()).hexdigest()[:8]
 
 NAV = [
-    ("agents", "/ai-agents", "服務方式"),
+    ("agents", "/ai-agents", "AI 代理人"),
     ("training", "/ai-training", "企業內訓"),
     ("dev", "/custom-software", "軟體開發"),
     ("cases", "/cases", "實績案例"),
