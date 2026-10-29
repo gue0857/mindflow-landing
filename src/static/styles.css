@@ -295,6 +295,7 @@ dl.facts dt:last-of-type, dl.facts dd:last-of-type { border-bottom: 0; }
   .cta-band { padding: 40px 28px; }
 }
 @media (max-width: 760px) {
+  .grid-2 > :last-child:nth-child(odd) { grid-column: auto; }
   section { padding: 64px 0; }
   .container { padding: 0 16px; }
   .hero { padding: 40px 0 64px; }
@@ -372,3 +373,10 @@ a.plink .more { color: var(--accent); }
 .transcript summary { cursor: pointer; font-weight: 700; padding: 12px 0; }
 .transcript p { font-size: 15.5px; line-height: 1.85; }
 @media (max-width: 760px) { .video-facade .play { width: 64px; height: 64px; margin: -32px 0 0 -32px; } }
+
+/* ---------- Screenshots ---------- */
+.shot-figure { margin: 0; }
+.shot-figure img { width: 100%; height: auto; display: block; border-radius: 14px; border: 1px solid var(--line); box-shadow: 0 14px 40px rgba(13, 27, 42, .10); background: #fff; }
+.shot-figure figcaption { color: var(--muted); font-size: 14.5px; margin-top: 12px; text-align: center; }
+.shot-grid { align-items: start; }
+.grid-2 > :last-child:nth-child(odd) { grid-column: 1 / -1; }
