@@ -1,0 +1,23 @@
+<div class="video-wrap">
+      <div class="video-facade" data-yt="{{VIDEO_ID}}">
+        <button type="button" aria-label="播放影片：MIND FLOW 思維流｜每天的重複工作，交給 AI 代理人">
+          <img src="/assets/video-cover.png" alt="影片封面：每天都有重複的事要做嗎？交給 AI 代理人" width="1280" height="720" loading="lazy">
+          <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg></span>
+        </button>
+      </div>
+      <p class="video-meta">3 分 21 秒｜<a href="https://www.youtube.com/watch?v={{VIDEO_ID}}" target="_blank" rel="noopener">在 YouTube 觀看</a>｜<a href="https://www.youtube.com/@mindflowtw" target="_blank" rel="noopener">YouTube 頻道 @mindflowtw</a></p>
+    {{TRANSCRIPT}}
+    </div>
+    <script>
+    document.querySelectorAll('.video-facade').forEach(function (f) {
+      f.querySelector('button').addEventListener('click', function () {
+        var i = document.createElement('iframe');
+        i.src = 'https://www.youtube-nocookie.com/embed/' + f.dataset.yt + '?autoplay=1&rel=0';
+        i.title = 'MIND FLOW 思維流｜每天的重複工作，交給 AI 代理人';
+        i.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+        i.allowFullscreen = true;
+        f.innerHTML = '';
+        f.appendChild(i);
+      });
+    });
+    </script>

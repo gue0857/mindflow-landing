@@ -29,8 +29,11 @@ SITE = {
     "street": "仁愛街2之7號1樓",
     "postal": "970",
     "demo": "https://demo.mindflow.tw",
+    "youtube": "https://www.youtube.com/@mindflowtw",
 }
 TODAY = datetime.date.today().isoformat()
+TRANSCRIPT = (SRC / "partials" / "video_transcript.html").read_text(encoding="utf-8")
+RAW = {}
 CSS_VER = hashlib.md5((SRC / "static" / "styles.css").read_bytes()).hexdigest()[:8]
 
 NAV = [
@@ -58,6 +61,7 @@ def org_graph():
                 "foundingDate": s["founded"],
                 "url": s["url"] + "/",
                 "logo": f"{s['url']}/assets/icon-512.png",
+                "sameAs": [s["youtube"]],
                 "description": "MIND FLOW 思維流是台灣花蓮的軟體公司，為企業打造專屬 AI 代理人：人下指令，AI 依排程把工作做完，遇到例外才請人確認，並定期主動匯報結果；也提供企業 AI 內訓與組織培訓，讓團隊自己會用 AI。不限產業與部門，實績涵蓋社群與網紅數據監測、多平台自動發布、AI 教學影片製作與日照機構工作流程系統 CarePro。",
                 "address": {
                     "@type": "PostalAddress",
@@ -90,6 +94,39 @@ def org_graph():
             },
         ],
     }
+
+
+VIDEO = {
+    "id": "adwX34Hk85A",
+    "name": "MIND FLOW 思維流｜每天的重複工作，交給 AI 代理人",
+    "description": "每天都有重複的事情要做嗎？MIND FLOW 思維流幫企業分析流程、設定 AI 工具，把重複的工作交給 AI 代理人：您下指令，AI 去做，做完主動匯報。影片也介紹人工核准與操作紀錄等安全機制、我們每天實際運作的案例，以及企業 AI 內訓與組織訓練。",
+    "upload": "2026-10-29T08:00:00+08:00",
+    "duration": "PT3M21S",
+    "length": 201,
+    "chapters": [(0, "開場：每天都有重複的事要做嗎"), (14, "您下指令，AI 去做"), (29, "很多流程都可以交給 AI"),
+                 (38, "生活中的例子"), (59, "我們幫您做三件事"), (84, "舉例：每週一的逾期帳款"),
+                 (109, "AI 做事，您掌握"), (126, "我們自己每天就是這樣工作"), (148, "企業內訓：讓團隊自己會用 AI"),
+                 (176, "從一次對話開始"), (193, "結尾")],
+}
+
+
+def video_ld(transcript):
+    """公司介紹影片的 VideoObject：章節寫成 Clip，搜尋結果才會出現重要時刻；附逐字稿給 AI 搜尋讀。"""
+    v, s = VIDEO, SITE
+    ch = v["chapters"]
+    watch = f"https://www.youtube.com/watch?v={v['id']}"
+    clips = [{"@type": "Clip", "name": n, "startOffset": t,
+              "endOffset": ch[i + 1][0] if i + 1 < len(ch) else v["length"], "url": f"{watch}&t={t}s"}
+             for i, (t, n) in enumerate(ch)]
+    return ld({
+        "@context": "https://schema.org", "@type": "VideoObject", "@id": f"{s['url']}/#brand-video",
+        "name": v["name"], "description": v["description"], "inLanguage": "zh-TW",
+        "thumbnailUrl": [f"{s['url']}/assets/video-cover.png", f"https://i.ytimg.com/vi/{v['id']}/maxresdefault.jpg"],
+        "uploadDate": v["upload"], "duration": v["duration"],
+        "embedUrl": f"https://www.youtube.com/embed/{v['id']}", "url": watch,
+        "publisher": {"@id": f"{s['url']}/#org"}, "hasPart": clips,
+        "transcript": re.sub(r"<[^>]+>|\s+", "", transcript),
+    })
 
 
 def parse_page(text):
@@ -188,6 +225,7 @@ def render(meta, body, header, footer):
 {ld(org_graph())}
 {breadcrumb_ld(meta)}
 {faq_ld(body) if meta.get("faq_schema") == "yes" else ""}
+{video_ld(TRANSCRIPT) if "{{BRAND_VIDEO" in RAW[meta["path"]] else ""}
 </head>
 <body>
 <a class="skip" href="#main">跳到主要內容</a>
@@ -216,11 +254,16 @@ def main():
     header = (SRC / "partials" / "header.html").read_text(encoding="utf-8")
     footer = (SRC / "partials" / "footer.html").read_text(encoding="utf-8")
     form = (SRC / "partials" / "contact_form.html").read_text(encoding="utf-8")
+    video = (SRC / "partials" / "video.html").read_text(encoding="utf-8").replace("{{VIDEO_ID}}", VIDEO["id"])
+    transcript_box = '<details class="transcript"><summary>影片逐字稿</summary>\n' + TRANSCRIPT + "    </details>"
 
     sitemap = []
     for f in sorted((SRC / "pages").glob("*.html")):
         meta, body = parse_page(f.read_text(encoding="utf-8"))
+        RAW[meta["path"]] = body
         body = body.replace("{{CONTACT_FORM}}", form)
+        body = body.replace("{{BRAND_VIDEO_WITH_TRANSCRIPT}}", video.replace("{{TRANSCRIPT}}", transcript_box))
+        body = body.replace("{{BRAND_VIDEO}}", video.replace("{{TRANSCRIPT}}", ""))
         (OUT / f.name).write_text(render(meta, body, header, footer), encoding="utf-8")
         if meta.get("sitemap", "yes") != "no":
             sitemap.append((meta["path"], meta.get("priority", "0.6"), meta.get("changefreq", "monthly")))

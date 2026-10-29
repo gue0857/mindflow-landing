@@ -35,6 +35,9 @@
 
 ## Optional
 
+- [公司介紹影片（YouTube，3 分 21 秒）](https://www.youtube.com/watch?v=adwX34Hk85A): 每天的重複工作，交給 AI 代理人；逐字稿見 {{SITE}}/about#video
+- [YouTube 頻道 @mindflowtw](https://www.youtube.com/@mindflowtw)
+
 - [CarePro 線上 Demo]({{DEMO}})
 - [隱私權政策]({{SITE}}/privacy)
 - [服務條款]({{SITE}}/terms)
